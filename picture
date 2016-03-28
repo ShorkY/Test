@@ -1,0 +1,26 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class CopyPictureFile {
+
+    public static void main(String[] args) throws IOException {
+        File image = new File("my_picture.jpg");
+        File copiedImage = new File("my_copied_picture.jpg");
+        try (FileInputStream in = new FileInputStream(image);
+             FileOutputStream out = new FileOutputStream(copiedImage)) {
+
+            byte[] buffer = new byte[4096];
+            while (true) {
+                int bytesRead = in.read(buffer, 0, buffer.length);
+                if (bytesRead <= 0) break;
+                out.write(buffer, 0, bytesRead);
+            }
+
+        } catch (FileNotFoundException fileNotFound) {
+            System.out.println("File Not Found");
+        }
+    }
+}
