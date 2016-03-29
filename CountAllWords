@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class CountAllWords {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String text = scanner.nextLine();
+        String words[] = text.split("[^A-Za-z]"+"[^']"); //but I think that if a word contains "'", like what's, should be considered as one word
+        System.out.println(words.length);
+
+    }
+}
